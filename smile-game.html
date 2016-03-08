@@ -27,20 +27,51 @@
 			var numberOfFaces = 5;
 			var theLeftSide = document.getElementById("leftSide");
 			var theRightSide = document.getElementById("rightSide");
+			var theBody = document.getElementsByTagName("body")[0];
 			generateFaces();
 			
 			function generateFaces(){
-				while (numberOfFaces > 0){
+				var counts = numberOfFaces;
+				while (counts > 0){
 					var leftFaces = document.createElement('img');
 					leftFaces.src = 'http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png';
 					leftFaces.style.top = Math.random()*400;
 					leftFaces.style.left = Math.random()*400;
 					theLeftSide.appendChild(leftFaces);
-					numberOfFaces -= 1;
+					counts -= 1;
 				}
 				var leftSideImages = theLeftSide.cloneNode(true);
 				leftSideImages.removeChild(leftSideImages.lastChild);
 				theRightSide.appendChild(leftSideImages);
+				
+				theLeftSide.lastChild.onclick = function nextLevel(event){
+					event.stopPropagation();
+					deleteFaces();
+					numberOfFaces += 5;
+					generateFaces();
+				}
+
+				theBody.onclick = function gameOver(){
+					alert("Game Over!");
+					theBody.onclick = null;
+					theLeftSide.lastChild.onclick = null;
+					deleteFaces();
+				}
+			}
+
+			function deleteFaces(){
+				// Array.prototype.forEach.call(theLeftSide.childNodes, function(face){
+				// 	face.remove();
+				// });
+				for (var i =0; i < numberOfFaces; i++) {
+					prompt ("numberOfFaces is " + numberOfFaces + ", i is " + i + ", the length of the theLeftSide.chiledNodes is " + theLeftSide.chiledNodes.length);
+					theLeftSide.removeChild(theLeftSide.firstChild);
+				}
+
+				for (var k = 0; k < (numberOfFaces - 1); k++){
+					prompt ("numberOfFaces - 1 is " + (numberOfFaces -1) + ", k is " + k + ", the length of the theRighttSide.chiledNodes is " + theRightSide.chiledNodes.length);
+					theRightSide.removeChild(theRightSide.firstChild);
+				}
 			}
 		</script>
 	</body>
