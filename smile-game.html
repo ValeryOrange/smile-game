@@ -64,14 +64,10 @@
 				// 	face.remove();
 				// });
 				for (var i =0; i < numberOfFaces; i++) {
-					prompt ("numberOfFaces is " + numberOfFaces + ", i is " + i + ", the length of the theLeftSide.chiledNodes is " + theLeftSide.chiledNodes.length);
+					// prompt ("numberOfFaces is " + numberOfFaces + ", i is " + i);
 					theLeftSide.removeChild(theLeftSide.firstChild);
-				}
-
-				for (var k = 0; k < (numberOfFaces - 1); k++){
-					prompt ("numberOfFaces - 1 is " + (numberOfFaces -1) + ", k is " + k + ", the length of the theRighttSide.chiledNodes is " + theRightSide.chiledNodes.length);
-					theRightSide.removeChild(theRightSide.firstChild);
-				}
+				};
+				theRightSide.removeChild(theRightSide.firstChild)
 			}
 		</script>
 	</body>
