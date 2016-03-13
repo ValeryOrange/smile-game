@@ -34,8 +34,8 @@
 			generateFaces();
 			
 			function generateFaces(){
-				// var levelNote = ;
-				theLevelParagraph.innerHTML = "Level " + level;
+				var levelNote = "Level " + level;
+				theLevelParagraph.innerHTML = levelNote;
 				var counts = numberOfFaces;
 				while (counts > 0){
 					var leftFaces = document.createElement('img');
@@ -61,6 +61,9 @@
 					alert("Game Over!");
 					theBody.onclick = null;
 					theLeftSide.lastChild.onclick = null;
+					theLevelParagraph.removeChild(theLevelParagraph.firstChild);
+					theLevelParagraph.innerHTML = "Your achivement: level " + level;
+					// theLevelParagraph.innerHTML = levelNote;
 					deleteFaces();
 				}
 			}
